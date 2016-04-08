@@ -45,21 +45,19 @@ public class LaserButtonClicker : MonoBehaviour
             btn.Select();
 
             pointerOnButton = true;
-            StartCoroutine(CheckButtonClick(btn));
+            
         }
     }
 
-    private IEnumerator CheckButtonClick(Button btn)
+  void Update()
     {
-        while (pointerOnButton)
+        if (pointerOnButton)
         {
             if (controller.GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))
             {
                 btn.onClick.Invoke();
             }
-            yield return new WaitForSeconds(0.1f);
         }
-
     }
     
    
